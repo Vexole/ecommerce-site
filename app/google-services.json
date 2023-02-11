@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "882247414513",
+    "project_id": "mobilecrunchers",
+    "storage_bucket": "mobilecrunchers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882247414513:android:c91b3f0a6409860ca8ef50",
+        "android_client_info": {
+          "package_name": "com.group1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882247414513-1ng4pu4qkbbbd9uhisr19u82550656ra.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCuHm1rQ7CGsKew2KdpBUBnBJoJvJa7wo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882247414513-1ng4pu4qkbbbd9uhisr19u82550656ra.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
