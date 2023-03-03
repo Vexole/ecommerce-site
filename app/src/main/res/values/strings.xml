@@ -37,6 +37,7 @@
     <string name="process">PROCESS</string>
     <string name="shop_now">Shop Now!</string>
     <string name="products">Products</string>
+    <string name="pay">Pay</string>
     <string-array name="countries">
         <item>Afghanistan</item>
         <item>Albania</item>
