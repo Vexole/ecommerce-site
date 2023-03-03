@@ -21,9 +21,21 @@
             android:textColor="@color/secondary_text_color"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tvShippingAddressName"
+            app:layout_constraintBottom_toTopOf="@+id/tvError"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#A60D0D"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tvShippingDetails"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="tvShippingAddressName" />
 
         <TextView
             android:id="@+id/tvShippingAddressName"
@@ -34,8 +46,8 @@
             android:textColor="@color/secondary_text_color"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/etShippingAddressName"
-            app:layout_constraintStart_toStartOf="@+id/tvShippingDetails"
-            app:layout_constraintTop_toBottomOf="@+id/tvShippingDetails" />
+            app:layout_constraintStart_toStartOf="@+id/tvError"
+            app:layout_constraintTop_toBottomOf="@+id/tvError" />
 
         <EditText
             android:id="@+id/etShippingAddressName"
@@ -138,6 +150,9 @@
             android:autofillHints=""
             android:ems="10"
             android:hint="@string/dummy_state"
+            android:maxLength="2"
+            app:helperText="Required"
+            app:helperTextColor="red"
             android:inputType="text"
             android:minHeight="48dp"
             android:textColorHint="@color/black"
@@ -168,6 +183,7 @@
             android:autofillHints="postalCode"
             android:ems="10"
             android:hint="@string/dummy_postal_code"
+            android:maxLength="7"
             android:inputType="text"
             android:minHeight="48dp"
             android:textColorHint="@color/black"
@@ -243,6 +259,7 @@
             android:ems="10"
             android:hint="@string/dummy_credit_card"
             android:inputType="number"
+            android:maxLength="19"
             android:minHeight="48dp"
             android:textColorHint="@color/black"
             android:textSize="16sp"
