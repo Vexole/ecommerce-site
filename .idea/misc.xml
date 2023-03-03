@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/malen/Documents/Conestoga/Adv Mobile App Dev/ecommerce-site/app/src/main/res/layout/activity_main.xml" value="0.3591485507246377" />
+        <entry key="..\:/Users/malen/Documents/Conestoga/Adv Mobile App Dev/ecommerce-site/app/src/main/res/layout/sign_in.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/malen/Documents/Conestoga/Adv Mobile App Dev/ecommerce-site/app/src/main/res/layout/sign_up.xml" value="0.3591485507246377" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

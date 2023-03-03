@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "882247414513",
+    "firebase_url": "https://mobilecrunchers-default-rtdb.firebaseio.com",
     "project_id": "mobilecrunchers",
     "storage_bucket": "mobilecrunchers.appspot.com"
   },
@@ -14,7 +15,36 @@
       },
       "oauth_client": [
         {
-          "client_id": "882247414513-1ng4pu4qkbbbd9uhisr19u82550656ra.apps.googleusercontent.com",
+          "client_id": "882247414513-nbsjffcn29130p6qapbfu7no41r92rg7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCuHm1rQ7CGsKew2KdpBUBnBJoJvJa7wo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882247414513-1ng4pu4qkbbbd9uhisr19u82550656ra.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882247414513:android:16a8dd68e4a0ca4ba8ef50",
+        "android_client_info": {
+          "package_name": "com.shresthabhupesh.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882247414513-nbsjffcn29130p6qapbfu7no41r92rg7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
