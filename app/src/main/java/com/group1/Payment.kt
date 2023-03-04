@@ -10,10 +10,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.DataSnapshot
 import com.group1.model.Cart
-import com.group1.model.LineItem
-import com.group1.model.Product
 import com.group1.payment.ApiClient
 import com.group1.utils.CartUtils
 import com.stripe.android.ApiResultCallback
@@ -28,21 +26,24 @@ class Payment : AppCompatActivity() {
     private lateinit var paymentIntentClientSecret: String
     private lateinit var stripe: Stripe
     private lateinit var userId: String
+    private lateinit var cart: Cart
+    private lateinit var cartList: DataSnapshot
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment)
         val sharedPreferences: SharedPreferences = this.getSharedPreferences("userInfo",
             Context.MODE_PRIVATE)
-        userId = sharedPreferences.getString("userId", "@gmail.com")!!
+        userId = sharedPreferences.getString("userId", "@gmail")!!
 
         try {
             stripe =
                 Stripe(this, PaymentConfiguration.getInstance(applicationContext).publishableKey)
             CartUtils.getCart(userId).get()
             .addOnSuccessListener {
-                val cart: Cart = it.getValue(Cart::class.java) ?: Cart("test", listOf(), 0.00, "In-Progress")
-                var tvYouPay = findViewById<TextView>(R.id.tvYouPay)
+                cartList = it
+                cart = cartList.children.lastOrNull()?.getValue(Cart::class.java) !!
+                val tvYouPay = findViewById<TextView>(R.id.tvYouPay)
                 tvYouPay.text = "Your Payment Total is ${cart.total}"
                 startCheckout(cart.total)
             }.addOnFailureListener{
@@ -62,7 +63,7 @@ class Payment : AppCompatActivity() {
             if (i == null)
                 builder.setPositiveButton("Ok", null)
             else
-                builder.setPositiveButton("Ok", DialogInterface.OnClickListener { _, _ ->  applicationContext.startActivity(i)})
+                builder.setPositiveButton("Ok") { _, _ -> applicationContext.startActivity(i) }
             builder.create().show()
         }
     }
@@ -101,19 +102,24 @@ class Payment : AppCompatActivity() {
                 val paymentIntent = result.intent
                 if (paymentIntent.status == StripeIntent.Status.Succeeded) {
 //                    val gson = GsonBuilder().setPrettyPrinting().create()
+                    val list = mutableListOf<Cart>()
+                    cartList.children.forEach{ argCart -> run {
+                        val oldCart: Cart = argCart.getValue(Cart::class.java)!!
+                        if (oldCart.status != "In-Progress") {
+                            list.add(oldCart)
+                        }
+                    }}
+                    cart.status = "Complete"
+                    list.add(cart)
                     CartUtils.getCart(userId)
-                        .get()
+                        .setValue(list)
                         .addOnSuccessListener {
-                            val cart: Cart = it.getValue(Cart::class.java) ?: Cart("test", listOf(), 0.00, "In-Progress")
-                            cart.status = "Complete"
-                            CartUtils.getCart(userId)
-                                .setValue(cart)
+                            val i = Intent(applicationContext, ProductList::class.java)
+                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            displayAlert("Payment Succeeded", "We have received your payment. Thank you for the order!", i)
                         }.addOnFailureListener{
                             Toast.makeText(applicationContext, "Failed Checkout Process", Toast.LENGTH_LONG).show()
                         }
-                    val i = Intent(applicationContext, ProductList::class.java)
-                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    displayAlert("Payment Succeeded", "We have received your payment. Thank you for the order!", i)
                 } else if (paymentIntent.status == StripeIntent.Status.RequiresPaymentMethod) {
                     displayAlert("Payment Failed", paymentIntent.lastPaymentError?.message.orEmpty())
                 }
