@@ -20,7 +20,6 @@ import com.group1.model.Cart
 import com.group1.model.LineItem
 import com.group1.model.Product
 import com.group1.utils.CartUtils
-import kotlin.math.roundToInt
 
 class ProductListAdapter(private val context: Context, options: FirebaseRecyclerOptions<Product>):
     FirebaseRecyclerAdapter<Product, ProductListAdapter.MyViewHolder>(options) {
