@@ -1,7 +1,7 @@
 package com.group1
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -28,7 +28,9 @@ class Payment : AppCompatActivity() {
     private lateinit var userId: String
     private lateinit var cart: Cart
     private lateinit var cartList: DataSnapshot
+    private lateinit var btnPay: Button
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment)
@@ -44,7 +46,7 @@ class Payment : AppCompatActivity() {
                 cartList = it
                 cart = cartList.children.lastOrNull()?.getValue(Cart::class.java) !!
                 val tvYouPay = findViewById<TextView>(R.id.tvYouPay)
-                tvYouPay.text = "Your Payment Total is ${cart.total}"
+                tvYouPay.text = "Your Payment Total is $${cart.total}"
                 startCheckout(cart.total)
             }.addOnFailureListener{
                 Toast.makeText(applicationContext, "Failed Fetching Cart", Toast.LENGTH_LONG).show()
@@ -83,8 +85,9 @@ class Payment : AppCompatActivity() {
 
         // Confirm the PaymentIntent with the payment widget
         val cardInputWidget = findViewById<CardInputWidget>(R.id.cardInputWidget)
-        val payButton = findViewById<Button>(R.id.payButton)
-        payButton.setOnClickListener {
+        val btnPay = findViewById<Button>(R.id.payButton)
+        btnPay.setOnClickListener {
+            btnPay.isEnabled = false
             cardInputWidget.paymentMethodCreateParams?.let { params ->
                 val confirmParams = ConfirmPaymentIntentParams
                     .createWithPaymentMethodCreateParams(params, paymentIntentClientSecret)
@@ -101,7 +104,6 @@ class Payment : AppCompatActivity() {
             override fun onSuccess(result: PaymentIntentResult) {
                 val paymentIntent = result.intent
                 if (paymentIntent.status == StripeIntent.Status.Succeeded) {
-//                    val gson = GsonBuilder().setPrettyPrinting().create()
                     val list = mutableListOf<Cart>()
                     cartList.children.forEach{ argCart -> run {
                         val oldCart: Cart = argCart.getValue(Cart::class.java)!!
@@ -118,10 +120,12 @@ class Payment : AppCompatActivity() {
                             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                             displayAlert("Payment Succeeded", "We have received your payment. Thank you for the order!", i)
                         }.addOnFailureListener{
+                            btnPay.isEnabled = true
                             Toast.makeText(applicationContext, "Failed Checkout Process", Toast.LENGTH_LONG).show()
                         }
                 } else if (paymentIntent.status == StripeIntent.Status.RequiresPaymentMethod) {
                     displayAlert("Payment Failed", paymentIntent.lastPaymentError?.message.orEmpty())
+                    btnPay.isEnabled = true
                 }
             }
 
