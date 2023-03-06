@@ -17,7 +17,6 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.group1.utils.CartUtils
 
 class Login : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -37,8 +36,8 @@ class Login : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        val btnLogin = findViewById<Button>(R.id.btnLogin)
-        btnLogin.setOnClickListener {
+        val btnSignInGoogle = findViewById<Button>(R.id.btnSignInGoogle)
+        btnSignInGoogle.setOnClickListener {
             signInGoogle()
         }
     }
