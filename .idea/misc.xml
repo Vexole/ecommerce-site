@@ -4,8 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/malen/Documents/Conestoga/Adv Mobile App Dev/ecommerce-site/app/src/main/res/layout/activity_main.xml" value="0.3591485507246377" />
-        <entry key="..\:/Users/malen/Documents/Conestoga/Adv Mobile App Dev/ecommerce-site/app/src/main/res/layout/sign_in.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/malen/Documents/Conestoga/Adv Mobile App Dev/ecommerce-site/app/src/main/res/layout/activity_sign_in.xml" value="0.14402173913043478" />
+        <entry key="..\:/Users/malen/Documents/Conestoga/Adv Mobile App Dev/ecommerce-site/app/src/main/res/layout/activity_sign_up.xml" value="0.14402173913043478" />
+        <entry key="..\:/Users/malen/Documents/Conestoga/Adv Mobile App Dev/ecommerce-site/app/src/main/res/layout/sign_in.xml" value="0.375" />
         <entry key="..\:/Users/malen/Documents/Conestoga/Adv Mobile App Dev/ecommerce-site/app/src/main/res/layout/sign_up.xml" value="0.3591485507246377" />
+        <entry key="..\:/Users/malen/Documents/Conestoga/Adv Mobile App Dev/ecommerce-site/app/src/main/res/layout/sign_up2.xml" value="0.14402173913043478" />
       </map>
     </option>
   </component>
