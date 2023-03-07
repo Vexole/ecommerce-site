@@ -7,8 +7,12 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
+import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -16,7 +20,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.FirebaseDatabase
 
 class Login : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -36,12 +42,57 @@ class Login : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
+        val btnSignIn = findViewById<Button>(R.id.btnSignIn)
+        btnSignIn.setOnClickListener {
+            createSignInIntent()
+        }
+
         val btnSignInGoogle = findViewById<Button>(R.id.btnSignInGoogle)
         btnSignInGoogle.setOnClickListener {
             signInGoogle()
         }
     }
 
+    // SignIn Email/Password
+
+    private val signInLauncher = registerForActivityResult(FirebaseAuthUIActivityResultContract())
+    { result ->
+        this.onSignInResult(result)
+    }
+
+    private fun createSignInIntent() {
+        val providers = arrayListOf(AuthUI.IdpConfig.EmailBuilder().build())
+        val signInIntent = AuthUI.getInstance()
+            .createSignInIntentBuilder()
+            .setIsSmartLockEnabled(false)
+            .setAvailableProviders(providers)
+            .setLogo(R.drawable.mc_logo)
+            .build()
+        signInLauncher.launch(signInIntent)
+    }
+
+    private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
+        if (result.resultCode == RESULT_OK) {
+            val user = FirebaseAuth.getInstance().currentUser
+            loadUI(user)
+        } else {
+            createSignInIntent()
+        }
+    }
+
+    private fun loadUI(user: FirebaseUser?) {
+        Toast.makeText(applicationContext, "Login Successfully", Toast.LENGTH_SHORT).show()
+        val userId = user?.email.toString().replace(".", "_") ?: ""
+        val sharedPreferences: SharedPreferences = applicationContext.getSharedPreferences("userInfo",
+            Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("userId", userId)
+        editor.apply()
+        val intent = Intent(applicationContext, ProductList::class.java)
+        startActivity(intent)
+    }
+
+    // SignIn Google
     private fun signInGoogle() {
         val signInIntent: Intent = googleSignInClient.signInIntent
         launcher.launch(signInIntent)
@@ -70,7 +121,7 @@ class Login : AppCompatActivity() {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
-                Toast.makeText(applicationContext, "Login Success", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Login Successfully", Toast.LENGTH_SHORT).show()
                 val userId = account.email?.replace(".", "_") ?: ""
                 val sharedPreferences: SharedPreferences = applicationContext.getSharedPreferences("userInfo",
                     Context.MODE_PRIVATE)
