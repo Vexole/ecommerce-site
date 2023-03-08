@@ -38,7 +38,7 @@ RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
         holder.tvDeliveredText.text = splashScreen.delivery
         holder.imgSplashScreen.setImageResource(splashScreen.image)
         holder.btnShopNow.setOnClickListener {
-            val i = Intent(context, Login::class.java)
+            val i = Intent(context, ProductList::class.java)
             context.startActivity(i)
         }
     }

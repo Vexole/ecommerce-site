@@ -1,6 +1,8 @@
 package com.group1
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
@@ -43,7 +45,12 @@ class ProductList : AppCompatActivity() {
 
     private fun signOut() {
         firebaseAuth.signOut()
-        val intent = Intent(applicationContext, Login::class.java)
+        val sharedPreferences: SharedPreferences = applicationContext.getSharedPreferences("userInfo",
+            Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.remove("userId")
+        editor.apply()
+        val intent = Intent(applicationContext, ProductList::class.java)
         startActivity(intent)
     }
 
