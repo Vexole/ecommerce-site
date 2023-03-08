@@ -7,6 +7,7 @@
         <entry key="..\:/Users/bhupesh.shrestha/AndroidStudioProjects/MobileCrunchers/app/src/main/res/layout-land/activity_product_list.xml" value="0.13229166666666667" />
         <entry key="..\:/Users/bhupesh.shrestha/AndroidStudioProjects/MobileCrunchers/app/src/main/res/layout-land/activity_splash_screen.xml" value="0.13229166666666667" />
         <entry key="..\:/Users/bhupesh.shrestha/AndroidStudioProjects/MobileCrunchers/app/src/main/res/layout-land/product.xml" value="0.1" />
+        <entry key="..\:/Users/bhupesh.shrestha/AndroidStudioProjects/MobileCrunchers/app/src/main/res/layout/activity_cart_items.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/bhupesh.shrestha/AndroidStudioProjects/MobileCrunchers/app/src/main/res/layout/activity_checkout_form.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/bhupesh.shrestha/AndroidStudioProjects/MobileCrunchers/app/src/main/res/layout/activity_login.xml" value="0.13125" />
         <entry key="..\:/Users/bhupesh.shrestha/AndroidStudioProjects/MobileCrunchers/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
@@ -14,16 +15,9 @@
         <entry key="..\:/Users/bhupesh.shrestha/AndroidStudioProjects/MobileCrunchers/app/src/main/res/layout/activity_product_detail.xml" value="0.1" />
         <entry key="..\:/Users/bhupesh.shrestha/AndroidStudioProjects/MobileCrunchers/app/src/main/res/layout/activity_product_list.xml" value="0.165625" />
         <entry key="..\:/Users/bhupesh.shrestha/AndroidStudioProjects/MobileCrunchers/app/src/main/res/layout/activity_splash_screen.xml" value="0.1796875" />
+        <entry key="..\:/Users/bhupesh.shrestha/AndroidStudioProjects/MobileCrunchers/app/src/main/res/layout/activity_user_cart.xml" value="0.1" />
         <entry key="..\:/Users/bhupesh.shrestha/AndroidStudioProjects/MobileCrunchers/app/src/main/res/layout/product.xml" value="0.25" />
         <entry key="..\:/Users/bhupesh.shrestha/AndroidStudioProjects/MobileCrunchers/app/src/main/res/xml/network_security_config.xml" value="0.1" />
-        <entry key="..\:/Users/malen/Documents/Conestoga/Adv Mobile App Dev/ecommerce-site/app/src/main/res/layout-land/activity_product_list.xml" value="0.3073192239858907" />
-        <entry key="..\:/Users/malen/Documents/Conestoga/Adv Mobile App Dev/ecommerce-site/app/src/main/res/layout-land/activity_splash_screen.xml" value="0.3073192239858907" />
-        <entry key="..\:/Users/malen/Documents/Conestoga/Adv Mobile App Dev/ecommerce-site/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Users/malen/Documents/Conestoga/Adv Mobile App Dev/ecommerce-site/app/src/main/res/layout/activity_product_detail.xml" value="0.36302083333333335" />
-        <entry key="..\:/Users/malen/Documents/Conestoga/Adv Mobile App Dev/ecommerce-site/app/src/main/res/layout/activity_product_list.xml" value="0.36302083333333335" />
-        <entry key="..\:/Users/malen/Documents/Conestoga/Adv Mobile App Dev/ecommerce-site/app/src/main/res/layout/activity_sign_up.xml" value="0.32382246376811596" />
-        <entry key="..\:/Users/malen/Documents/Conestoga/Adv Mobile App Dev/ecommerce-site/app/src/main/res/layout/activity_splash_screen.xml" value="0.36302083333333335" />
-        <entry key="..\:/Users/malen/Documents/Conestoga/Adv Mobile App Dev/ecommerce-site/app/src/main/res/layout/product.xml" value="0.36302083333333335" />
       </map>
     </option>
   </component>

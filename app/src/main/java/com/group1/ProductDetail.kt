@@ -53,7 +53,7 @@ class ProductDetail : AppCompatActivity() {
                     val storeRef: StorageReference = FirebaseStorage.getInstance().getReferenceFromUrl(product?.imageName ?: "")
                     Glide.with(imgProduct.context).load(storeRef).into(imgProduct)
                     btnAddToCart.setOnClickListener {
-                        val i = Intent(applicationContext, CheckoutForm::class.java)
+                        val i = Intent(applicationContext, UserCart::class.java)
                         startActivity(i)
                     }
             }
