@@ -39,8 +39,10 @@ class ProductList : AppCompatActivity() {
 
     private fun getUserProfile() {
         val user = firebaseAuth.currentUser
-        val welcomeMessage = findViewById<TextView>(R.id.txtWelcomeUser)
-        welcomeMessage.text = "Welcome back, " + user?.email.toString() + "!"
+        val welcomeMessage = findViewById<TextView>(R.id.txtWelcomeUser1)
+        val emailUserMessage = findViewById<TextView>(R.id.txtWelcomeUser2)
+        welcomeMessage.text = if(user?.email == null) "Welcome to MobileCrunchers!" else "Welcome back,"
+        emailUserMessage.text = if(user?.email == null) "" else user?.email.toString() + "!"
     }
 
     private fun signOut() {

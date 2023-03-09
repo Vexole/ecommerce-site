@@ -12,4 +12,10 @@
     <color name="secondary_text_color">#040E52</color>
     <color name="primary_color">#040E52</color>
     <color name="secondary_color">#FFFFFF</color>
+    <color name="gray">#EAE9E9</color>
+    <color name="gray_02">#F1EEEE</color>
+    <color name="purple_light">#6422C1</color>
+    <color name="purple_dark">#150b23</color>
+    <color name="black_02">#151515</color>
+    <color name="black_03">#5C5B5B</color>
 </resources>

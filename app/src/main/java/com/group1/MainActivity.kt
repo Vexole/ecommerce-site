@@ -17,9 +17,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val vPager = findViewById<ViewPager2>(R.id.vPager)
         val adapter = ViewPagerAdapter(this, arrayListOf(
-            SplashScreen("Splash 1", "Delivery 1", R.drawable.splash1),
-            SplashScreen("Splash 2", "Delivery 2", R.drawable.splash2),
-            SplashScreen("Splash 3", "Delivery 3", R.drawable.splash3)
+            SplashScreen("Shopping Made Easy!", "SHOP FROM HOME AND GET IT DELIVERED TO YOUR DOOR STEPS.", R.drawable.phones3),
+            SplashScreen("Splash 2", "Delivery 2", R.drawable.phones4),
+            SplashScreen("Splash 3", "Delivery 3", R.drawable.phones5)
         ))
         vPager.adapter = adapter
         seedDatabase()

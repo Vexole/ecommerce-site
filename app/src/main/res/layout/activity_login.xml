@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_phones"
+    android:background="@drawable/bg_abstract4"
     tools:context=".Login">
 
     <ImageView
@@ -15,21 +15,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mc_logo" />
+        app:srcCompat="@drawable/mc_logo"
+        android:contentDescription="TODO" />
 
     <Button
         android:id="@+id/btnSignIn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="132dp"
         android:text="login with email/password"
-        android:textColor="@color/black"
-        app:backgroundTint="#F6F5F5"
+        android:textColor="@color/purple_light"
+        app:backgroundTint="@color/white"
         app:icon="@drawable/fui_ic_mail_white_24dp"
-        app:iconTint="#101010"
+        app:iconTint="@color/purple_light"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.843"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
@@ -40,24 +40,12 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="24dp"
         android:text="sign in with google"
-        android:textColor="@color/black"
-        app:backgroundTint="#F6F5F5"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/purple_light"
         app:icon="@drawable/googleg_standard_color_18"
-        app:iconTint="#151515"
+        app:iconTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSignIn" />
 
-    <TextView
-        android:id="@+id/txtNewAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create new Account?"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignInGoogle"
-        app:layout_constraintVertical_bias="0.108" />
 </androidx.constraintlayout.widget.ConstraintLayout>
