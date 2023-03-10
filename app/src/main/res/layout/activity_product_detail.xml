@@ -71,16 +71,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="1 Unit"
+                    android:text="@string/_1_unit"
                     android:textColor="#757272"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvProductDescription" />
 
                 <TextView
-                    android:id="@+id/tvProductId"
+                    android:id="@+id/tvModelId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1000"
+                    android:text="@string/_1000"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/tvUnit" />
 
@@ -92,7 +92,7 @@
                     android:contentDescription=""
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvProductId"
+                    app:layout_constraintTop_toBottomOf="@+id/tvModelId"
                     app:srcCompat="@drawable/default_mobile" />
 
                 <TextView
@@ -182,6 +182,7 @@
                 android:layout_height="match_parent"
                 android:padding="16dp">
 
+
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -201,16 +202,16 @@
                     android:padding="4dp">
 
                     <TextView
-                        android:id="@+id/tvMaterialLabel"
-                        android:layout_width="125dp"
+                        android:id="@+id/tvColorLabel"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Material" />
+                        android:text="Color" />
 
                     <TextView
-                        android:id="@+id/tvMaterial"
-                        android:layout_width="193dp"
+                        android:id="@+id/tvColor"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="PolyCarbon" />
+                        android:text="Black" />
                 </TableRow>
 
                 <TableRow
@@ -219,16 +220,16 @@
                     android:padding="4dp">
 
                     <TextView
-                        android:id="@+id/tvManufacturerLabel"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tvStatusLabel"
+                        android:layout_width="125dp"
                         android:layout_height="wrap_content"
-                        android:text="Manufacturer" />
+                        android:text="Status" />
 
                     <TextView
-                        android:id="@+id/tvManufacturer"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tvStatus"
+                        android:layout_width="193dp"
                         android:layout_height="wrap_content"
-                        android:text="Samsung" />
+                        android:text="In Stock" />
                 </TableRow>
 
                 <TableRow
@@ -258,7 +259,7 @@
                         android:id="@+id/tvSpecProductIdLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Product Id" />
+                        android:text="Model Id" />
 
                     <TextView
                         android:id="@+id/tvSpecProductId"
@@ -273,17 +274,18 @@
                     android:padding="4dp">
 
                     <TextView
-                        android:id="@+id/tvDepartmentLabel"
+                        android:id="@+id/tvCapacityLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Department" />
+                        android:text="Capacity" />
 
                     <TextView
-                        android:id="@+id/tvDepartment"
+                        android:id="@+id/tvCapacity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Electronics" />
+                        android:text="128 GB" />
                 </TableRow>
+
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -291,35 +293,18 @@
                     android:padding="4dp">
 
                     <TextView
-                        android:id="@+id/tvMinQtyPurchaseLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Minimum Purchas Qty" />
-
-                    <TextView
-                        android:id="@+id/tvMinQtyPurchase"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="4dp">
-
-                    <TextView
-                        android:id="@+id/tvWashingInstructionLabel"
+                        android:id="@+id/tvOperatingSysLabel"
                         android:layout_width="135dp"
                         android:layout_height="wrap_content"
                         android:text="Instruction" />
 
                     <TextView
-                        android:id="@+id/tvWashingInstruction"
+                        android:id="@+id/tvOperatingSys"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1" />
                 </TableRow>
+
             </TableLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.FirebaseDatabase
-import com.group1.model.Product
+import com.group1.model.Model
 
 class ProductList : AppCompatActivity() {
     private lateinit var adapter: ProductListAdapter
@@ -21,7 +21,7 @@ class ProductList : AppCompatActivity() {
 
     private fun setAdapter() {
         val query = FirebaseDatabase.getInstance().getReference("products")
-        val options = FirebaseRecyclerOptions.Builder<Product>().setQuery(query, Product::class.java).build()
+        val options = FirebaseRecyclerOptions.Builder<Model>().setQuery(query, Model::class.java).build()
 
         adapter = ProductListAdapter(applicationContext, options)
         val recyclerView : RecyclerView = findViewById(R.id.recyclerView)
