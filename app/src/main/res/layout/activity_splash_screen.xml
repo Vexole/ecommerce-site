@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_abstract4"
+    android:background="@drawable/bg_abstract"
     tools:context=".MainActivity">
 
 
@@ -16,17 +16,17 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toTopOf="@+id/tvStoreDescription"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.818"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/mc_logo" />
 
     <TextView
         android:id="@+id/tvStoreDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/shopping_made_easy"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -38,15 +38,18 @@
 
     <ImageView
         android:id="@+id/imgSplashScreen"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_width="379dp"
+        android:layout_height="264dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="28dp"
         android:contentDescription="@string/ecommerce_picture"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline8"
+        app:layout_constraintVertical_bias="0.513"
         app:srcCompat="@drawable/home_page" />
 
     <TextView
@@ -59,7 +62,7 @@
         android:text="@string/delivery_text"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,13 +89,11 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginBottom="68dp"
-        android:background="@drawable/button_states"
-        android:backgroundTint="#e64f33"
+        android:backgroundTint="@color/white"
         android:paddingStart="24dp"
         android:paddingEnd="24dp"
         android:text="@string/shop_now"
-        android:textColor="@color/purple_light"
-        app:backgroundTint="@color/white"
+        android:textColor="@color/purple_dark"
         app:layout_constraintBottom_toTopOf="@+id/guideline13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

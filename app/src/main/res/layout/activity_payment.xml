@@ -11,12 +11,26 @@
     tools:showIn="@layout/activity_payment">
 
     <!--  ...  -->
+    <TextView
+        android:id="@+id/tvYouTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/payment_title"
+        android:textColor="@color/purple_light"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/tvYouPay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="" />
+        android:text=""
+        android:textColor="@color/black_03"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="24dp"
+        />
 
     <com.stripe.android.view.CardInputWidget
         android:id="@+id/cardInputWidget"
