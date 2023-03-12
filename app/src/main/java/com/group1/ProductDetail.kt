@@ -21,7 +21,7 @@ class ProductDetail : AppCompatActivity() {
         setContentView(R.layout.activity_product_detail)
 
         val productId = intent.getStringExtra("modelId") ?: ""
-        FirebaseDatabase.getInstance().getReference("products")
+        FirebaseDatabase.getInstance().getReference("model")
                 .child(productId).get().addOnSuccessListener {
                     val model = it.getValue(Model::class.java)
                     val imgProduct = findViewById<ImageView>(R.id.imageView)
@@ -38,7 +38,7 @@ class ProductDetail : AppCompatActivity() {
                     val tvColor = findViewById<TextView>(R.id.tvColor)
                     val tvCapacity = findViewById<TextView>(R.id.tvCapacity)
 
-                    tvModelId.text = "Product ID: " + model?.modelId
+                    tvModelId.text = "Model ID: " + model?.modelId
                     tvModelTitle.text = model?.modelName
                     tvProductDescription.text = model?.modelDescription
                     tvUnit.text = "1 Unit"
