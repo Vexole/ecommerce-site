@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/goToCart"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"
+        android:title="Go to Cart" />
+    <item android:title="Profile">
+        <menu>
+            <item
+                android:id="@+id/login"
+                android:icon="@drawable/ic_baseline_login_24"
+                android:title="Login" />
+            <item
+                android:id="@+id/logOut"
+                android:icon="@drawable/ic_baseline_exit_to_app_24"
+                android:title="Log Out" />
+        </menu>
+    </item>
+</menu>
