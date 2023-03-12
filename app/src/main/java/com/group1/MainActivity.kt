@@ -12,11 +12,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val vPager = findViewById<ViewPager2>(R.id.vPager)
-        val adapter = ViewPagerAdapter(this, arrayListOf(
-            SplashScreen("Shopping Made Easy!", "SHOP FROM HOME AND GET IT DELIVERED TO YOUR DOOR STEPS.", R.drawable.phones3),
-            SplashScreen("Shopping Made Easy!", "100% GENUINE PRODUCTS GUARANTEED.", R.drawable.phones4),
-            SplashScreen("Shopping Made Easy!", "HASSLE FREE RETURNS", R.drawable.phones5)
-        ))
+        val adapter = ViewPagerAdapter(
+            this, arrayListOf(
+                SplashScreen(
+                    "Shopping Made Easy!",
+                    "SHOP FROM HOME AND GET IT DELIVERED TO YOUR DOOR STEPS.",
+                    R.drawable.phones3
+                ),
+                SplashScreen(
+                    "Shopping Made Easy!",
+                    "100% GENUINE PRODUCTS GUARANTEED.",
+                    R.drawable.phones4
+                ),
+                SplashScreen("Shopping Made Easy!", "HASSLE FREE RETURNS", R.drawable.phones5)
+            )
+        )
         vPager.adapter = adapter
         seedDatabase()
     }

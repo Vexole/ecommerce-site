@@ -21,19 +21,19 @@ import com.group1.model.LineItem
 import com.group1.model.Product
 import com.group1.utils.CartUtils
 
-class ProductListAdapter(private val context: Context, options: FirebaseRecyclerOptions<Product>):
+class ProductListAdapter(private val context: Context, options: FirebaseRecyclerOptions<Product>) :
     FirebaseRecyclerAdapter<Product, ProductListAdapter.MyViewHolder>(options) {
 
-    class MyViewHolder(inflater: LayoutInflater, parent: ViewGroup)
-        : RecyclerView.ViewHolder(inflater.inflate(R.layout.product, parent, false)) {
+    class MyViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
+        RecyclerView.ViewHolder(inflater.inflate(R.layout.product, parent, false)) {
         var cvProductList: CardView = itemView.findViewById(R.id.cvProductList)
         var imgProduct: ImageView = itemView.findViewById(R.id.imgProduct)
         var tvProductTitle: TextView = itemView.findViewById(R.id.tvProductTitle)
-        var tvProductDescription:TextView = itemView.findViewById(R.id.tvProductDescription)
-        var tvPrice:TextView = itemView.findViewById(R.id.tvPrice)
-        var tvStatus:TextView = itemView.findViewById(R.id.tvStatus)
+        var tvProductDescription: TextView = itemView.findViewById(R.id.tvProductDescription)
+        var tvPrice: TextView = itemView.findViewById(R.id.tvPrice)
+        var tvStatus: TextView = itemView.findViewById(R.id.tvStatus)
         var btnAddToCart: Button = itemView.findViewById(R.id.btnAddToCart)
-        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -54,8 +54,10 @@ class ProductListAdapter(private val context: Context, options: FirebaseRecycler
 
         holder.btnAddToCart.setOnClickListener {
             val context = it.context
-            val sharedPreferences: SharedPreferences = context.getSharedPreferences("userInfo",
-                Context.MODE_PRIVATE)
+            val sharedPreferences: SharedPreferences = context.getSharedPreferences(
+                "userInfo",
+                Context.MODE_PRIVATE
+            )
             val userId = sharedPreferences.getString("userId", "@gmail")!!
 
             if (userId == "@gmail") {
@@ -111,7 +113,8 @@ class ProductListAdapter(private val context: Context, options: FirebaseRecycler
             }
         }
 
-        val storeRef: StorageReference = FirebaseStorage.getInstance().getReferenceFromUrl(model.imageName)
+        val storeRef: StorageReference =
+            FirebaseStorage.getInstance().getReferenceFromUrl(model.imageName)
         Glide.with(holder.imgProduct.context).load(storeRef).into(holder.imgProduct)
     }
 }

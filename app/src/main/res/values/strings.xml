@@ -46,6 +46,10 @@
     <string name="close">Close</string>
     <string name="_1_unit">1 Unit</string>
     <string name="_1000">1000</string>
+    <string name="profile">Profile</string>
+    <string name="login">Login</string>
+    <string name="log_out">Log Out</string>
+    <string name="checkout">Checkout</string>
     <string-array name="countries">
         <item>Afghanistan</item>
         <item>Albania</item>

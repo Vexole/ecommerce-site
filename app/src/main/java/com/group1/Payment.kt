@@ -10,8 +10,6 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.google.firebase.FirebaseApp
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.group1.model.Cart
 import com.group1.payment.ApiClient
@@ -36,25 +34,32 @@ class Payment : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment)
-        val sharedPreferences: SharedPreferences = this.getSharedPreferences("userInfo",
-            Context.MODE_PRIVATE)
+        val sharedPreferences: SharedPreferences = this.getSharedPreferences(
+            "userInfo",
+            Context.MODE_PRIVATE
+        )
         userId = sharedPreferences.getString("userId", "@gmail")!!
 
         try {
             stripe =
                 Stripe(this, PaymentConfiguration.getInstance(applicationContext).publishableKey)
             CartUtils.getCart(userId).get()
-            .addOnSuccessListener {
-                cartList = it
-                cart = cartList.children.lastOrNull()?.getValue(Cart::class.java) !!
-                val tvYouPay = findViewById<TextView>(R.id.tvYouPay)
-                tvYouPay.text = "Payment Total: $${cart.total}"
-                startCheckout(cart.total)
-            }.addOnFailureListener{
-                Toast.makeText(applicationContext, "Failed Fetching Cart", Toast.LENGTH_LONG).show()
-            }
+                .addOnSuccessListener {
+                    cartList = it
+                    cart = cartList.children.lastOrNull()?.getValue(Cart::class.java)!!
+                    val tvYouPay = findViewById<TextView>(R.id.tvYouPay)
+                    tvYouPay.text = "Payment Total: $${cart.total}"
+                    startCheckout(cart.total)
+                }.addOnFailureListener {
+                    Toast.makeText(applicationContext, "Failed Fetching Cart", Toast.LENGTH_LONG)
+                        .show()
+                }
         } catch (ex: Exception) {
-            Toast.makeText(applicationContext, "Issue Processing Payment: " + ex.message, Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                applicationContext,
+                "Issue Processing Payment: " + ex.message,
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
 
@@ -73,17 +78,20 @@ class Payment : AppCompatActivity() {
     }
 
     private fun startCheckout(total: Double) {
-        ApiClient().createPaymentIntent("card", "CAD", total, completion = {
-            paymentIntentClientSecret, error ->
-            run {
-                paymentIntentClientSecret?.let {
-                    this.paymentIntentClientSecret = it
+        ApiClient().createPaymentIntent(
+            "card",
+            "CAD",
+            total,
+            completion = { paymentIntentClientSecret, error ->
+                run {
+                    paymentIntentClientSecret?.let {
+                        this.paymentIntentClientSecret = it
+                    }
+                    error?.let {
+                        displayAlert("Failed to Load PaymentIntent", "Error: $error")
+                    }
                 }
-                error?.let {
-                    displayAlert("Failed to Load PaymentIntent", "Error: $error")
-                }
-            }
-        })
+            })
 
         // Confirm the PaymentIntent with the payment widget
         val cardInputWidget = findViewById<CardInputWidget>(R.id.cardInputWidget)
@@ -102,17 +110,19 @@ class Payment : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         // Handle the results of stripe.confirmPayment
-        stripe.onPaymentResult(requestCode, data, object: ApiResultCallback<PaymentIntentResult> {
+        stripe.onPaymentResult(requestCode, data, object : ApiResultCallback<PaymentIntentResult> {
             override fun onSuccess(result: PaymentIntentResult) {
                 val paymentIntent = result.intent
                 if (paymentIntent.status == StripeIntent.Status.Succeeded) {
                     val list = mutableListOf<Cart>()
-                    cartList.children.forEach{ argCart -> run {
-                        val oldCart: Cart = argCart.getValue(Cart::class.java)!!
-                        if (oldCart.status != "In-Progress") {
-                            list.add(oldCart)
+                    cartList.children.forEach { argCart ->
+                        run {
+                            val oldCart: Cart = argCart.getValue(Cart::class.java)!!
+                            if (oldCart.status != "In-Progress") {
+                                list.add(oldCart)
+                            }
                         }
-                    }}
+                    }
                     cart.status = "Complete"
                     list.add(cart)
                     CartUtils.getCart(userId)
@@ -120,13 +130,24 @@ class Payment : AppCompatActivity() {
                         .addOnSuccessListener {
                             val i = Intent(applicationContext, ProductList::class.java)
                             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                            displayAlert("Payment Succeeded", "We have received your payment. Thank you for the order!", i)
-                        }.addOnFailureListener{
+                            displayAlert(
+                                "Payment Succeeded",
+                                "We have received your payment. Thank you for the order!",
+                                i
+                            )
+                        }.addOnFailureListener {
                             btnPay.isEnabled = true
-                            Toast.makeText(applicationContext, "Failed Checkout Process", Toast.LENGTH_LONG).show()
+                            Toast.makeText(
+                                applicationContext,
+                                "Failed Checkout Process",
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                 } else if (paymentIntent.status == StripeIntent.Status.RequiresPaymentMethod) {
-                    displayAlert("Payment Failed", paymentIntent.lastPaymentError?.message.orEmpty())
+                    displayAlert(
+                        "Payment Failed",
+                        paymentIntent.lastPaymentError?.message.orEmpty()
+                    )
                     btnPay.isEnabled = true
                 }
             }

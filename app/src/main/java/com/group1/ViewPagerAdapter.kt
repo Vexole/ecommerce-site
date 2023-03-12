@@ -14,14 +14,15 @@ class ViewPagerAdapter(
     private val context: Context,
     private val splashScreens: List<SplashScreen>
 ) :
-RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
+    RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View
+    class ViewHolder(
+        itemView: View
     ) : RecyclerView.ViewHolder(itemView) {
-         var tvStoreDescription : TextView? = itemView.findViewById(R.id.tvStoreDescription)
-         var tvDeliveredText : TextView = itemView.findViewById(R.id.tvDeliveredText)
-         var imgSplashScreen : ImageView= itemView.findViewById(R.id.imgSplashScreen)
-         var btnShopNow :  Button = itemView.findViewById(R.id.btnShopNow)
+        var tvStoreDescription: TextView? = itemView.findViewById(R.id.tvStoreDescription)
+        var tvDeliveredText: TextView = itemView.findViewById(R.id.tvDeliveredText)
+        var imgSplashScreen: ImageView = itemView.findViewById(R.id.imgSplashScreen)
+        var btnShopNow: Button = itemView.findViewById(R.id.btnShopNow)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

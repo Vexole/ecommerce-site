@@ -17,18 +17,19 @@ class ApiClient {
         completion: (paymentIntentClientSecret: String?, error: String?) -> Unit
     ) {
         val mediaType = "application/json; charset=utf-8".toMediaType()
+        val convertedTotal = (total * 100).toString().substringBefore(".")
         val requestJson = """
             {
                 "currency": "$currency",
                 "paymentMethodType": "$paymentMethodType",
-                "total": "$total"
+                "total": "$convertedTotal"
             }            
         """.trimIndent()
         val body = requestJson.toRequestBody(mediaType)
         val request = Request.Builder().url(BackendUrl + "create-payment-intent")
             .post(body).build()
 
-        httpClient.newCall(request).enqueue(object: Callback {
+        httpClient.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 completion(null, "$e")
             }
@@ -39,7 +40,7 @@ class ApiClient {
                 } else {
                     val responseData = response.body?.string()
                     val responseJson = responseData?.let { JSONObject(it) } ?: JSONObject()
-                    val paymentIntentClientSecret : String = responseJson.getString("clientSecret")
+                    val paymentIntentClientSecret: String = responseJson.getString("clientSecret")
                     completion(paymentIntentClientSecret, null)
                 }
             }

@@ -7,7 +7,6 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.firebase.ui.auth.AuthUI
@@ -22,7 +21,6 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.database.FirebaseDatabase
 
 class Login : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -82,9 +80,11 @@ class Login : AppCompatActivity() {
 
     private fun loadUI(user: FirebaseUser?) {
         Toast.makeText(applicationContext, "Login Successfully", Toast.LENGTH_SHORT).show()
-        val userId = user?.email.toString().replace(".", "_") ?: ""
-        val sharedPreferences: SharedPreferences = applicationContext.getSharedPreferences("userInfo",
-            Context.MODE_PRIVATE)
+        val userId = user?.email.toString().replace(".", "_")
+        val sharedPreferences: SharedPreferences = applicationContext.getSharedPreferences(
+            "userInfo",
+            Context.MODE_PRIVATE
+        )
         val editor = sharedPreferences.edit()
         editor.putString("userId", userId)
         editor.apply()
@@ -98,13 +98,14 @@ class Login : AppCompatActivity() {
         launcher.launch(signInIntent)
     }
 
-    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-            handleResult(task)
+    private val launcher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val task: Task<GoogleSignInAccount> =
+                    GoogleSignIn.getSignedInAccountFromIntent(result.data)
+                handleResult(task)
+            }
         }
-    }
 
     private fun handleResult(task: Task<GoogleSignInAccount>) {
         if (task.isSuccessful) {
@@ -123,8 +124,10 @@ class Login : AppCompatActivity() {
             if (it.isSuccessful) {
                 Toast.makeText(applicationContext, "Login Successfully", Toast.LENGTH_SHORT).show()
                 val userId = account.email?.replace(".", "_") ?: ""
-                val sharedPreferences: SharedPreferences = applicationContext.getSharedPreferences("userInfo",
-                    Context.MODE_PRIVATE)
+                val sharedPreferences: SharedPreferences = applicationContext.getSharedPreferences(
+                    "userInfo",
+                    Context.MODE_PRIVATE
+                )
                 val editor = sharedPreferences.edit()
                 editor.putString("userId", userId)
                 editor.apply()
