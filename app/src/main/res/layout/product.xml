@@ -112,9 +112,9 @@
                 android:backgroundTint="@color/purple_light"
                 android:text="@string/add_to_cart"
                 android:textSize="12dp"
-                app:icon="@drawable/cart_18"
+                app:icon="@drawable/ic_baseline_add_shopping_cart_24"
                 app:iconPadding="8dp"
-                app:iconSize="16dp"
+                app:iconSize="18dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvStatus" />
