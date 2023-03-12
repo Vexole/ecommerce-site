@@ -12,14 +12,18 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.group1.model.Product
 
+
 class ProductList : AppCompatActivity() {
     private lateinit var adapter: ProductListAdapter
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,13 +38,16 @@ class ProductList : AppCompatActivity() {
         val btnSignOut = findViewById<Button>(R.id.btnSignOut)
         btnSignOut.setOnClickListener {
             signOut()
+//            if(googleSignInClient != null) signOutGoogle() else signOut()
         }
     }
 
     private fun getUserProfile() {
         val user = firebaseAuth.currentUser
-        val welcomeMessage = findViewById<TextView>(R.id.txtWelcomeUser)
-        welcomeMessage.text = "Welcome back, " + user?.email.toString() + "!"
+        val welcomeMessage = findViewById<TextView>(R.id.txtWelcomeUser1)
+        val emailUserMessage = findViewById<TextView>(R.id.txtWelcomeUser2)
+        welcomeMessage.text = if(user?.email == null) "Welcome to MobileCrunchers!" else "Welcome back,"
+        emailUserMessage.text = if(user?.email == null) "" else user?.email.toString() + "!"
     }
 
     private fun signOut() {
@@ -53,6 +60,20 @@ class ProductList : AppCompatActivity() {
         val intent = Intent(applicationContext, ProductList::class.java)
         startActivity(intent)
     }
+
+
+//    private fun signOutGoogle() {
+//        googleSignInClient.signOut()
+//            .addOnCompleteListener(this, OnCompleteListener<Void?> {
+//                val sharedPreferences: SharedPreferences = applicationContext.getSharedPreferences("userInfo",
+//                    Context.MODE_PRIVATE)
+//                val editor = sharedPreferences.edit()
+//                editor.remove("userId")
+//                editor.apply()
+//                val intent = Intent(applicationContext, ProductList::class.java)
+//                startActivity(intent)
+//            })
+//    }
 
     private fun setAdapter() {
         val query = FirebaseDatabase.getInstance().getReference("products")

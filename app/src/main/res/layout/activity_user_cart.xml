@@ -23,18 +23,18 @@
             android:layout_height="wrap_content"
             android:id="@+id/cLayout">
 
-            <TextView
-                android:id="@+id/tvCart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/your_cart"
-                android:textColor="@color/secondary_text_color"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/tvCart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/your_cart"
+                    android:textColor="@color/purple_light"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvSN"
@@ -100,14 +100,16 @@
                 app:layout_constraintGuide_percent="0.95
 " />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toStartOf="@+id/guideline17"
-                app:layout_constraintStart_toStartOf="@+id/guideline16"
-                app:layout_constraintTop_toBottomOf="@+id/tvProductName" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="12dp"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline17"
+                    app:layout_constraintStart_toStartOf="@+id/guideline16"
+                    app:layout_constraintTop_toBottomOf="@+id/tvProductName" />
 
             <TextView
                 android:id="@+id/tvTotalAmountLabel"
@@ -116,6 +118,9 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 android:text="Total"
+                android:textColor="@color/black_03"
+                android:textSize="18sp"
+                android:padding="4dp"
                 app:layout_constraintEnd_toStartOf="@+id/tvTotalAmount"
                 app:layout_constraintTop_toBottomOf="@+id/rView" />
 
@@ -124,18 +129,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="$100.00"
+                android:textSize="18sp"
+                android:textColor="@color/purple_light"
+                android:background="@color/gray_02"
+                android:padding="4dp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/guideline17"
                 app:layout_constraintTop_toTopOf="@+id/tvTotalAmountLabel" />
 
-            <Button
-                android:id="@+id/btnCheckout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Checkout"
-                app:layout_constraintEnd_toStartOf="@+id/guideline17"
-                app:layout_constraintStart_toStartOf="@+id/guideline16"
-                app:layout_constraintTop_toBottomOf="@+id/tvTotalAmountLabel" />
+                <Button
+                    android:id="@+id/btnCheckout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Checkout"
+                    app:backgroundTint="@color/purple_light"
+                    app:icon="@drawable/ic_checkout"
+                    app:iconSize="16dp"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline17"
+                    app:layout_constraintStart_toStartOf="@+id/guideline16"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTotalAmountLabel" />
         </androidx.constraintlayout.widget.ConstraintLayout>
             <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -148,10 +161,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="No Items in the cart!!"
-                android:textColor="@color/secondary_text_color"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:text="No items in the cart!"
+                android:textColor="@color/black_03"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

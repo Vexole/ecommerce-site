@@ -10,6 +10,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.group1.model.Cart
 import com.group1.payment.ApiClient
@@ -46,7 +48,7 @@ class Payment : AppCompatActivity() {
                 cartList = it
                 cart = cartList.children.lastOrNull()?.getValue(Cart::class.java) !!
                 val tvYouPay = findViewById<TextView>(R.id.tvYouPay)
-                tvYouPay.text = "Your Payment Total is $${cart.total}"
+                tvYouPay.text = "Payment Total: $${cart.total}"
                 startCheckout(cart.total)
             }.addOnFailureListener{
                 Toast.makeText(applicationContext, "Failed Fetching Cart", Toast.LENGTH_LONG).show()

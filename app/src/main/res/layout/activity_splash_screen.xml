@@ -4,45 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
+    android:background="@drawable/bg_abstract"
     tools:context=".MainActivity">
 
-    <TextView
+
+    <ImageView
         android:id="@+id/tvStoreName"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:text="@string/store_name"
-        android:textColor="@color/secondary_text_color"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/tvStoreDescription"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvStoreDescription"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_chainStyle="spread_inside" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/mc_logo" />
 
     <TextView
         android:id="@+id/tvStoreDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/shopping_made_easy"
-        android:textColor="@color/secondary_text_color"
-        android:textSize="28sp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/imgSplashScreen"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imgSplashScreen"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_width="379dp"
+        android:layout_height="264dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="28dp"
         android:contentDescription="@string/ecommerce_picture"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline8"
+        app:layout_constraintVertical_bias="0.513"
         app:srcCompat="@drawable/home_page" />
 
     <TextView
@@ -54,9 +61,8 @@
         android:layout_marginEnd="16dp"
         android:text="@string/delivery_text"
         android:textAlignment="center"
-        android:textColor="@color/secondary_text_color"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,15 +87,13 @@
     <Button
         android:id="@+id/btnShopNow"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginBottom="68dp"
+        android:backgroundTint="@color/white"
         android:paddingStart="24dp"
-        android:paddingTop="16dp"
         android:paddingEnd="24dp"
-        android:paddingBottom="16dp"
         android:text="@string/shop_now"
-        android:textColor="@color/primary_text_color"
-        android:backgroundTint="@color/primary_color"
-        android:textSize="18sp"
+        android:textColor="@color/purple_dark"
         app:layout_constraintBottom_toTopOf="@+id/guideline13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
