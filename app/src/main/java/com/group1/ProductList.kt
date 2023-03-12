@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
@@ -32,13 +34,19 @@ class ProductList : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         FirebaseApp.initializeApp(this)
 
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
+
         getUserProfile()
         setAdapter()
 
         val btnSignOut = findViewById<Button>(R.id.btnSignOut)
         btnSignOut.setOnClickListener {
             signOut()
-//            if(googleSignInClient != null) signOutGoogle() else signOut()
+            if(googleSignInClient != null) signOutGoogle() else signOut()
         }
     }
 
@@ -62,18 +70,18 @@ class ProductList : AppCompatActivity() {
     }
 
 
-//    private fun signOutGoogle() {
-//        googleSignInClient.signOut()
-//            .addOnCompleteListener(this, OnCompleteListener<Void?> {
-//                val sharedPreferences: SharedPreferences = applicationContext.getSharedPreferences("userInfo",
-//                    Context.MODE_PRIVATE)
-//                val editor = sharedPreferences.edit()
-//                editor.remove("userId")
-//                editor.apply()
-//                val intent = Intent(applicationContext, ProductList::class.java)
-//                startActivity(intent)
-//            })
-//    }
+    private fun signOutGoogle() {
+        googleSignInClient.signOut()
+            .addOnCompleteListener(this, OnCompleteListener<Void?> {
+                val sharedPreferences: SharedPreferences = applicationContext.getSharedPreferences("userInfo",
+                    Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.remove("userId")
+                editor.apply()
+                val intent = Intent(applicationContext, ProductList::class.java)
+                startActivity(intent)
+            })
+    }
 
     private fun setAdapter() {
         val query = FirebaseDatabase.getInstance().getReference("products")

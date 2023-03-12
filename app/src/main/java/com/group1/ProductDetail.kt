@@ -20,42 +20,40 @@ class ProductDetail : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)
 
-        val productId = intent.getStringExtra("productId") ?: ""
+        val productId = intent.getStringExtra("modelId") ?: ""
         FirebaseDatabase.getInstance().getReference("products")
-                .child(productId).get().addOnSuccessListener {
-                    val product = it.getValue(Product::class.java)
-                    val imgProduct = findViewById<ImageView>(R.id.imageView)
-                    val btnAddToCart = findViewById<Button>(R.id.btnAddToCart)
+            .child(productId).get().addOnSuccessListener {
+                val model = it.getValue(Product::class.java)
+                val imgProduct = findViewById<ImageView>(R.id.imageView)
+                val btnAddToCart = findViewById<Button>(R.id.btnAddToCart)
 
-                    val tvProductTitle = findViewById<TextView>(R.id.tvProductTitle)
-                    val tvProductDescription = findViewById<TextView>(R.id.tvProductDescription)
-                    val tvUnit = findViewById<TextView>(R.id.tvUnit)
-                    val tvProductId = findViewById<TextView>(R.id.tvProductId)
-                    val tvPrice = findViewById<TextView>(R.id.tvPrice)
-                    val tvMaterial = findViewById<TextView>(R.id.tvMaterial)
-                    val tvBrand = findViewById<TextView>(R.id.tvBrand)
-                    val tvManufacturer = findViewById<TextView>(R.id.tvManufacturer)
-                    val tvDepartment = findViewById<TextView>(R.id.tvDepartment)
-                    val tvMinQtyPurchase = findViewById<TextView>(R.id.tvMinQtyPurchase)
-                    val tvWashingInstruction = findViewById<TextView>(R.id.tvWashingInstruction)
+                val tvModelId = findViewById<TextView>(R.id.tvModelId)
+                val tvModelTitle = findViewById<TextView>(R.id.tvProductTitle)
+                val tvProductDescription = findViewById<TextView>(R.id.tvProductDescription)
+                val tvUnit = findViewById<TextView>(R.id.tvUnit)
+                val tvStatus = findViewById<TextView>(R.id.tvStatus)
+                val tvPrice = findViewById<TextView>(R.id.tvPrice)
+                val tvOperatingSys = findViewById<TextView>(R.id.tvOperatingSys)
+                val tvBrand = findViewById<TextView>(R.id.tvBrand)
+                val tvColor = findViewById<TextView>(R.id.tvColor)
+                val tvCapacity = findViewById<TextView>(R.id.tvCapacity)
 
-                    tvProductTitle.text = product?.productName
-                    tvProductDescription.text = product?.productDescription
-                    tvUnit.text = "1 Unit"
-                    tvProductId.text = "Product ID: " + product?.productId
-                    tvPrice.text = "$ " + product?.price
-                    tvMaterial.text = product?.material
-                    tvBrand.text = product?.brand
-                    tvManufacturer.text = product?.manufacturer
-                    tvDepartment.text = product?.department
-                    tvMinQtyPurchase.text = product?.minQtyPurchase.toString()
-                    tvWashingInstruction.text = product?.washingInstruction
-                    val storeRef: StorageReference = FirebaseStorage.getInstance().getReferenceFromUrl(product?.imageName ?: "")
-                    Glide.with(imgProduct.context).load(storeRef).into(imgProduct)
-                    btnAddToCart.setOnClickListener {
-                        val i = Intent(applicationContext, UserCart::class.java)
-                        startActivity(i)
-                    }
+                tvModelId.text = "Product ID: " + model?.modelId
+                tvModelTitle.text = model?.modelName
+                tvProductDescription.text = model?.modelDescription
+                tvUnit.text = "1 Unit"
+                tvStatus.text = model?.modelStatus
+                tvPrice.text = "$ " + model?.price
+                tvOperatingSys.text = model?.operatingSys
+                tvBrand.text = model?.brand
+                tvColor.text = model?.color
+                tvCapacity.text = model?.capacity
+                val storeRef: StorageReference = FirebaseStorage.getInstance().getReferenceFromUrl(model?.imageName ?: "")
+                Glide.with(imgProduct.context).load(storeRef).into(imgProduct)
+                btnAddToCart.setOnClickListener {
+                    val i = Intent(applicationContext, UserCart::class.java)
+                    startActivity(i)
+                }
             }
             .addOnFailureListener{
                 Toast.makeText(applicationContext, "Error Fetching Data", Toast.LENGTH_LONG).show()

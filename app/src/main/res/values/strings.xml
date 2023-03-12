@@ -42,6 +42,8 @@
     <string name="payment_title">Payment</string>
     <string name="sign_out">Sign Out</string>
     <string name="your_cart">Your Cart</string>
+    <string name="_1_unit">1 Unit</string>
+    <string name="_1000">1000</string>
     <string-array name="countries">
         <item>Afghanistan</item>
         <item>Albania</item>

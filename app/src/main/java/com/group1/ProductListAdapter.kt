@@ -41,14 +41,14 @@ class ProductListAdapter(private val context: Context, options: FirebaseRecycler
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int, model: Product) {
-        holder.tvProductTitle.text = model.productName
-        holder.tvProductDescription.text = model.productDescription
+        holder.tvProductTitle.text = model.modelName
+        holder.tvProductDescription.text = model.modelDescription
         holder.tvPrice.text = StringBuilder().append("$ ").append(model.price).toString()
-        holder.tvStatus.text = model.productStatus
+        holder.tvStatus.text = model.modelStatus
         holder.cvProductList.setOnClickListener {
             val i = Intent(context, ProductDetail::class.java)
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            i.putExtra("productId", model.productId)
+            i.putExtra("modelId", model.modelId)
             context.startActivity(i)
         }
 
@@ -70,15 +70,15 @@ class ProductListAdapter(private val context: Context, options: FirebaseRecycler
                             var cart: Cart? = cartValue.lastOrNull()?.getValue(Cart::class.java)
                             if (cart == null || cart.status == "Complete") {
                                 cart = Cart(userId, mutableListOf(), 0.00, "In-Progress")
-                                val item = LineItem(model.productId, model.price, 1)
+                                val item = LineItem(model.modelId, model.price, 1)
                                 val list = cart.lineItemList.toMutableList()
                                 list.add(item)
                                 cart.lineItemList = list
                             } else {
                                 val cartItem =
-                                    cart.lineItemList.filter { item -> item.itemId == model.productId }
+                                    cart.lineItemList.filter { item -> item.itemId == model.modelId }
                                 if (cartItem.isEmpty()) {
-                                    val item = LineItem(model.productId, model.price, 1)
+                                    val item = LineItem(model.modelId, model.price, 1)
                                     val list = cart.lineItemList.toMutableList()
                                     list.add(item)
                                     cart.lineItemList = list

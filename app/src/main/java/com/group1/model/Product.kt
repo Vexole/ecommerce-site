@@ -1,16 +1,14 @@
 package com.group1.model
 
-class Product (var productId: String,
-               var productName: String,
-               var productDescription: String,
-               var productStatus: String,
+class Product (var modelId: String,
+               var modelName: String,
+               var modelDescription: String,
+               var modelStatus: String,
                var price: Double,
                var imageName: String,
-               var material: String,
-               var manufacturer: String,
+               var operatingSys: String,
                var brand: String,
-               var department: String,
-               var minQtyPurchase: Int,
-               var washingInstruction: String) {
-    constructor() : this("", "", "", "", 0.00, "", "", "", "", "", 0, "")
+               var color: String,
+               var capacity: String) {
+    constructor() : this("", "", "", "", 0.00, "", "", "", "", "")
 }
