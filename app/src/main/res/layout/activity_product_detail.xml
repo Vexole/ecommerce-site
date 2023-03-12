@@ -129,7 +129,7 @@
                     android:backgroundTint="@color/purple_light"
                     android:text="@string/go_to_cart"
                     android:textColor="@color/primary_text_color"
-                    app:icon="@drawable/cart_18"
+                    app:icon="@drawable/cart_24"
                     app:iconSize="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
