@@ -20,7 +20,7 @@ class ProductList : AppCompatActivity() {
     }
 
     private fun setAdapter() {
-        val query = FirebaseDatabase.getInstance().getReference("products")
+        val query = FirebaseDatabase.getInstance().getReference("model")
         val options = FirebaseRecyclerOptions.Builder<Model>().setQuery(query, Model::class.java).build()
 
         adapter = ProductListAdapter(applicationContext, options)

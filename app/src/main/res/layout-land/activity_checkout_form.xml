@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    tools:context=".CheckoutForm">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvShippingDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/shipping_details"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tvShippingAddressName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvShippingAddressName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/address_name"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/etShippingAddressName"
+            app:layout_constraintStart_toStartOf="@+id/tvShippingDetails"
+            app:layout_constraintTop_toBottomOf="@+id/tvShippingDetails" />
+
+        <EditText
+            android:id="@+id/etShippingAddressName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints="name"
+            android:ems="10"
+            android:hint="@string/home"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColorHint="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/tvAddressLine1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tvShippingAddressName"
+            app:layout_constraintTop_toBottomOf="@+id/tvShippingAddressName" />
+
+        <TextView
+            android:id="@+id/tvAddressLine1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/address_line_1"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/etAddressLine1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etShippingAddressName" />
+
+        <EditText
+            android:id="@+id/etAddressLine1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints="streetAddress"
+            android:ems="10"
+            android:hint="@string/this_street"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textColorHint="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/tvCity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tvAddressLine1"
+            app:layout_constraintTop_toBottomOf="@+id/tvAddressLine1" />
+
+        <TextView
+            android:id="@+id/tvCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/city"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/etCity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etAddressLine1" />
+
+        <EditText
+            android:id="@+id/etCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints="city"
+            android:ems="10"
+            android:hint="@string/waterloo"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textColorHint="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/tvState"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tvCity"
+            app:layout_constraintTop_toBottomOf="@+id/tvCity" />
+
+        <TextView
+            android:id="@+id/tvState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/state"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etCity" />
+
+        <EditText
+            android:id="@+id/etState"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/dummy_state"
+            android:maxLength="2"
+            app:helperText="Required"
+            app:helperTextTextColor="@color/red"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/guideline9"
+            app:layout_constraintStart_toStartOf="@+id/tvState"
+            app:layout_constraintTop_toBottomOf="@+id/tvState"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+        <TextView
+            android:id="@+id/tvPostalCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/postal_code"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="16sp"
+            android:maxLength="6"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/tvState"
+            app:layout_constraintStart_toStartOf="@+id/etPostalCode"
+            app:layout_constraintTop_toBottomOf="@+id/etCity" />
+
+        <EditText
+            android:id="@+id/etPostalCode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints="postalCode"
+            android:ems="10"
+            android:hint="@string/dummy_postal_code"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toBottomOf="@+id/tvPostalCode" />
+
+        <TextView
+            android:id="@+id/tvCountry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/country"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/etCountry"
+            app:layout_constraintStart_toStartOf="@+id/etState"
+            app:layout_constraintTop_toBottomOf="@+id/etState" />
+
+        <Spinner
+            android:id="@+id/etCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:entries="@array/countries"
+            android:hint="@string/dummy_country"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textColorHint="#757575"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tvCountry"
+            app:layout_constraintTop_toBottomOf="@+id/tvCountry"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+
+        <Button
+            android:id="@+id/btnProcessPayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:paddingLeft="28dp"
+            android:paddingTop="16dp"
+            android:paddingRight="28dp"
+            android:paddingBottom="16dp"
+            android:text="@string/process"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etCountry" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.33" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.66"  />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

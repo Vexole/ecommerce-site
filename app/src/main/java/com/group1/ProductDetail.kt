@@ -28,7 +28,7 @@ class ProductDetail : AppCompatActivity() {
                     val btnAddToCart = findViewById<Button>(R.id.btnAddToCart)
 
                     val tvModelId = findViewById<TextView>(R.id.tvModelId)
-                    val tvModelTitle = findViewById<TextView>(R.id.tvProductTitle)
+                    val tvModelTitle = findViewById<TextView>(R.id.tvModelTitle)
                     val tvProductDescription = findViewById<TextView>(R.id.tvProductDescription)
                     val tvUnit = findViewById<TextView>(R.id.tvUnit)
                     val tvStatus = findViewById<TextView>(R.id.tvStatus)

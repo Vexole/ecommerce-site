@@ -2,37 +2,23 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     >
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.99" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.05" />
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cvProductList"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="4dp"
         android:layout_marginBottom="8dp"
         app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toTopOf="@+id/guideline5">
+        app:layout_constraintTop_toTopOf="@+id/guideline8">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutProductDescription"
@@ -40,47 +26,51 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp">
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.3" />
+
             <TextView
                 android:id="@+id/tvStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
                 android:text="@string/in_stock"
                 android:textColor="#2E7D32"
-                android:textSize="16sp"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvPrice"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvProductDescription" />
+                app:layout_constraintTop_toTopOf="@+id/tvPrice" />
 
             <ImageView
                 android:id="@+id/imgProduct"
                 android:layout_width="0dp"
-                android:layout_height="125dp"
+                android:layout_height="0dp"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="2dp"
                 android:layout_marginEnd="4dp"
-                android:contentDescription="@string/dummy_product_description"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toTopOf="@+id/tvProductTitle"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:contentDescription="Mobile Phone"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline12"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/default_mobile" />
 
             <TextView
-                android:id="@+id/tvProductTitle"
+                android:id="@+id/tvModelTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="2dp"
+                android:layout_marginStart="4dp"
                 android:text="@string/dummy_product_title"
-                android:textAlignment="center"
                 android:textColor="@color/primary_color"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/tvProductDescription"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/imgProduct"
-                app:layout_constraintTop_toBottomOf="@+id/imgProduct" />
+                app:layout_constraintStart_toStartOf="@+id/guideline12"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvProductDescription"
@@ -92,40 +82,35 @@
                 android:maxLines="4"
                 android:scrollHorizontally="false"
                 android:text="@string/dummy_product_description"
-                android:textAlignment="viewStart"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvProductTitle"
-                app:layout_constraintTop_toBottomOf="@+id/tvProductTitle" />
+                app:layout_constraintStart_toStartOf="@+id/tvModelTitle"
+                app:layout_constraintTop_toBottomOf="@+id/tvModelTitle" />
 
             <TextView
                 android:id="@+id/tvPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/dummy_price"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/tvProductDescription"
                 app:layout_constraintTop_toBottomOf="@+id/tvProductDescription" />
 
             <Button
                 android:id="@+id/btnAddToCart"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:layout_marginBottom="2dp"
+                android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/primary_color"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
                 android:text="@string/add_to_cart"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvPrice"
-                tools:ignore="TouchTargetSizeCheck" />
+                app:layout_constraintTop_toBottomOf="@+id/tvStatus" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -138,10 +123,17 @@
         app:layout_constraintGuide_percent="0.01" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
+        android:id="@+id/guideline7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="1.0" />
+        app:layout_constraintGuide_percent="0.99" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

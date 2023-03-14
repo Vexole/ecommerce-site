@@ -28,7 +28,7 @@ class ProductListAdapter(private val context: Context, options: FirebaseRecycler
         : RecyclerView.ViewHolder(inflater.inflate(R.layout.product, parent, false)) {
         var cvProductList: CardView = itemView.findViewById(R.id.cvProductList)
         var imgProduct: ImageView = itemView.findViewById(R.id.imgProduct)
-        var tvProductTitle: TextView = itemView.findViewById(R.id.tvProductTitle)
+        var tvProductTitle: TextView = itemView.findViewById(R.id.tvModelTitle)
         var tvProductDescription:TextView = itemView.findViewById(R.id.tvProductDescription)
         var tvPrice:TextView = itemView.findViewById(R.id.tvPrice)
         var tvStatus:TextView = itemView.findViewById(R.id.tvStatus)
@@ -48,7 +48,7 @@ class ProductListAdapter(private val context: Context, options: FirebaseRecycler
         holder.cvProductList.setOnClickListener {
             val i = Intent(context, ProductDetail::class.java)
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            i.putExtra("productId", model.modelId)
+            i.putExtra("modelId", model.modelId)
             context.startActivity(i)
         }
 

@@ -61,7 +61,7 @@
                 app:srcCompat="@drawable/default_mobile" />
 
             <TextView
-                android:id="@+id/tvProductTitle"
+                android:id="@+id/tvModelTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -86,8 +86,8 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvProductTitle"
-                app:layout_constraintTop_toBottomOf="@+id/tvProductTitle" />
+                app:layout_constraintStart_toStartOf="@+id/tvModelTitle"
+                app:layout_constraintTop_toBottomOf="@+id/tvModelTitle" />
 
             <TextView
                 android:id="@+id/tvPrice"
